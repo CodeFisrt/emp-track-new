@@ -1,0 +1,200 @@
+/* Main Container Styles */
+.employee-form-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  /* Header Styles */
+  .header-section {
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  
+  .company-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .company-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+  }
+  
+  .employee-code {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  /* Section Styles */
+  .section {
+    margin-bottom: 25px;
+    page-break-inside: avoid;
+  }
+  
+  .section-title {
+    background-color: #f0f0f0;
+    padding: 8px 10px;
+    font-size: 16px;
+    margin: 0 0 15px 0;
+    border-left: 4px solid #333;
+  }
+  
+  /* Single Line Field Styles */
+  .single-line-field {
+    display: flex;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #ddd;
+  }
+  
+  .field-label {
+    font-weight: bold;
+    min-width: 200px;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .field-value {
+    flex-grow: 1;
+    font-size: 14px;
+  }
+  
+  /* Table Styles */
+  .salary-table, .family-table, .document-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+    font-size: 13px;
+  }
+  
+  .salary-table th, .family-table th, .document-table th {
+    background-color: #f0f0f0;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-weight: bold;
+  }
+  
+  .salary-table td, .family-table td, .document-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .document-table th, .document-table td {
+    text-align: center;
+  }
+  
+  /* Nomination Form Styles */
+  .nomination-form {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+  
+  .nomination-form h4 {
+    margin: 0 0 15px 0;
+    font-size: 15px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+  }
+  
+  /* Declaration Section */
+  .declaration-section {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 1px solid #333;
+  }
+  
+  .declaration-section p {
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+  
+  .signature-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  
+  .employee-signature, .employer-signature {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .signature-line {
+    border-top: 1px solid #333;
+    margin-top: 5px;
+    height: 1px;
+  }
+  
+  .date {
+    align-self: flex-end;
+    text-align: center;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+  
+  /* Print Button Styles */
+  .print-button-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .print-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .print-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Print-specific styles */
+  @media print {
+    .print-button-container {
+      display: none;
+    }
+    
+    body {
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .employee-form-container {
+      padding: 0;
+      box-shadow: none;
+      max-width: 100%;
+    }
+    
+    .single-line-field {
+      page-break-inside: avoid;
+    }
+  }
