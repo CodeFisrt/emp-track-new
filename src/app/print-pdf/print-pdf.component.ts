@@ -70,6 +70,54 @@ export class PrintPdfComponent {
     this.employeeService.getEmployeeById(this.editId).subscribe({
       next: (response) => {
         this.pdfData =  response;
+        this.pdfData.salaryPayroll = [
+    {
+      transportFacility: this.pdfData.transportFacility || false,
+      routeNo: this.pdfData.routeNo || '',
+      actualCtc: this.pdfData.actualCtc || 0,
+      basicSalary: this.pdfData.basicSalary || 0,
+      hra: this.pdfData.hra || 0,
+      conveyanceAllowance: this.pdfData.conveyanceAllowance || 0,
+      medicalAllowance: this.pdfData.medicalAllowance || 0,
+      otherAllowance: this.pdfData.otherAllowance || 0,
+      attendanceIncentive: this.pdfData.attendanceIncentive || 0,
+
+      grossSalary:
+        (this.pdfData.basicSalary || 0) +
+        (this.pdfData.hra || 0) +
+        (this.pdfData.conveyanceAllowance || 0) +
+        (this.pdfData.medicalAllowance || 0) +
+        (this.pdfData.otherAllowance || 0) +
+        (this.pdfData.attendanceIncentive || 0),
+
+      pfEmployee: this.pdfData.pfEmployee || 0,
+      esiEmployee: this.pdfData.esiEmployee || 0,
+      lwfEmployee: this.pdfData.lwfEmployee || 0,
+      totalDeduction:
+        (this.pdfData.pfEmployee || 0) +
+        (this.pdfData.esiEmployee || 0) +
+        (this.pdfData.lwfEmployee || 0),
+
+      pfEmployer: this.pdfData.pfEmployer || 0,
+      esiEmployer: this.pdfData.esiEmployer || 0,
+      lwfEmployer: this.pdfData.lwfEmployer || 0,
+      salaryBonus: this.pdfData.salaryBonus || 0,
+      exgratia: this.pdfData.exgratia || 0,
+      subTotalCtc: this.pdfData.subTotalCtc || 0,
+
+      fixedCtc: this.pdfData.fixedCtc || 0,
+      nightRate: this.pdfData.nightRate || 0,
+      otRate: this.pdfData.otRate || 0,
+      remarks: this.pdfData.remarks || '',
+
+      employeeType: this.pdfData.employeeType || '',
+      wageCalculationType: this.pdfData.wageCalculationType || '',
+      paymentType: this.pdfData.paymentType || '',
+      overtimeEnabled: this.pdfData.overtimeEnabled || false,
+      foodingEnabled: this.pdfData.foodingEnabled || false
+    }
+  ];
+
         console.log("pdf data", this.pdfData)
       },
       error: (err) => {
@@ -172,6 +220,7 @@ export class PrintPdfComponent {
     return this.employeeForm.get('additionalInfo') as FormGroup;
   }
   get salaryPayrollForm(): FormGroup {
+    // console.log(this.employeeForm);
     return this.employeeForm.get('salaryPayroll') as FormGroup;
   }
   get statutoryForm():FormGroup{
@@ -283,6 +332,7 @@ export class PrintPdfComponent {
     //   return;
     // }
     const formData = this.employeeForm.value;
+    // console.log(formData);
     const payload = {
        
       ...formData.personalInfo,
@@ -331,13 +381,21 @@ export class PrintPdfComponent {
   }
   print() {
     const printContents = document.getElementById('print-section')?.innerHTML;
-    const originalContents = document.body.innerHTML;
+  const originalContents = document.body.innerHTML;
 
-    if (printContents) {
-      document.body.innerHTML = printContents;
-      window.print();
-      document.body.innerHTML = originalContents;
-      window.location.reload(); // optional: reload to restore state
+  if (printContents) {
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    window.location.reload(); // Restore page after print
+    // const printContents = document.getElementById('print-section')?.innerHTML;
+    // const originalContents = document.body.innerHTML;
+
+    // if (printContents) {
+    //   document.body.innerHTML = printContents;
+    //   window.print();
+    //   document.body.innerHTML = originalContents;
+    //   window.location.reload(); // optional: reload to restore state
     }
   }
 }

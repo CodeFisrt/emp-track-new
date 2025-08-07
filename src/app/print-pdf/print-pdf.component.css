@@ -69,16 +69,34 @@
     flex-grow: 1;
     font-size: 14px;
   }
+  /* salary table style */
+  .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.salary-table {
+  width: 100%; /* or min-width: 100% to prevent shrinkage */
+  border-collapse: collapse;
+}
+
+.salary-table th,
+.salary-table td {
+  white-space: nowrap; /* Prevent cell wrapping */
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
   
   /* Table Styles */
-  .salary-table, .family-table, .document-table {
+  .salary-table, .family-table, .document-table, .expereince-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 15px;
     font-size: 13px;
   }
   
-  .salary-table th, .family-table th, .document-table th {
+  .salary-table th, .family-table th, .document-table th, .expereince-table th {
     background-color: #f0f0f0;
     padding: 8px;
     text-align: left;
@@ -86,7 +104,7 @@
     font-weight: bold;
   }
   
-  .salary-table td, .family-table td, .document-table td {
+  .salary-table td, .family-table td, .document-table td, .expereince-table td {
     padding: 8px;
     border: 1px solid #ddd;
   }
@@ -94,8 +112,44 @@
   .document-table th, .document-table td {
     text-align: center;
   }
-  
-  /* Nomination Form Styles */
+  /* style for salary table */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 10px;
+  }
+
+  .table-responsive {
+    overflow: visible !important;
+  }
+
+  .salary-table {
+    width: 100% !important;
+    border-collapse: collapse;
+    table-layout: fixed; /* Helps force equal width */
+    word-wrap: break-word;
+    font-size: 9px;
+  }
+
+  .salary-table th,
+  .salary-table td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+
   .nomination-form {
     margin-bottom: 20px;
     padding: 15px;

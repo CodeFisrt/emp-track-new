@@ -1,881 +1,612 @@
-<div class="container main-card-wrap py-2" id="print-section">
-  <div class="text-end mb-3">
-    <!-- <small>{{ currentDate | date:'dd/MM/yyyy, HH:mm' }}</small> -->
+<div class="employee-form-container" id="print-section">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="company-header">
+      <h2>FA HOME AND APPAREL PVT LTD-148</h2>
+      <p>PLOT NO.: 148 SECTOR-5, IMT MANESAR, GURUGRAM, HARYANA - 122050</p>
+    </div>
+    <div class="employee-code">
+      <p><strong>EMPLOYEE CODE:</strong> {{pdfData.payCode || 'FH0958'}}</p>
+    </div>
   </div>
 
-  <!-- Personal Information Section -->
-  <div class="my-3 p-3 border">
-    <h4 class="pt-3 m-0 form-section-title">Personal Information</h4>
+  <!-- Employee Details Section completed-->
+  <div class="section">
+    <h3 class="section-title">Personal Information</h3>
+    <div class="single-line-field">
+      <span class="field-label">Aadhar No. (12 digits)*</span>
+      <span class="field-value">{{pdfData.aadharNo}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Paycode</span>
+      <span class="field-value">{{pdfData.payCode}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Card No.</span>
+      <span class="field-value">{{pdfData.cardNo}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Entry date</span>
+      <span class="field-value">{{pdfData.entryDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Post Applied For*</span>
+      <span class="field-value">{{printDroddownValue('postAppliedFor',pdfData.postAppliedFor)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Designation*</span>
+      <span class="field-value">{{printDroddownValue('designation',pdfData.designation)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Department*</span>
+      <span class="field-value">{{printDroddownValue('department',pdfData.dedepartmentsignation)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Post Applied For*</span>
+      <span class="field-value">{{printDroddownValue('postAppliedFor',pdfData.postAppliedFor)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Designation*</span>
+      <span class="field-value">{{printDroddownValue('designation',pdfData.designation)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Department*</span>
+      <span class="field-value">{{printDroddownValue('department',pdfData.dedepartmentsignation)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Sub Dept.*</span>
+      <span class="field-value">{{printDroddownValue('subDepartment',pdfData.subDepartment)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Division*</span>
+      <span class="field-value">{{printDroddownValue('division',pdfData.division)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Category*</span>
+      <span class="field-value">{{printDroddownValue('category',pdfData.category)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Cadre*</span>
+      <span class="field-value">{{printDroddownValue('cadre',pdfData.cadre)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Company*</span>
+      <span class="field-value">{{getCompanyData(pdfData.company)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Location*</span>
+      <span class="field-value">{{pdfData.location}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Cost Center*</span>
+      <span class="field-value">{{printDroddownValue('costCentre',pdfData.costCentre)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">RL Band*</span>
+      <span class="field-value">{{printDroddownValue('rlBand',pdfData.rlBand)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Name in Capital Letters*</span>
+      <span class="field-value">{{pdfData.fullName | uppercase}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Father's/Husband's Name*</span>
+      <span class="field-value">{{pdfData.fatherOrHusbandName}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Mother's Name</span>
+      <span class="field-value">{{pdfData.motherName}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Date of Birth</span>
+      <span class="field-value">{{pdfData.dateOfBirth | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Age*</span>
+      <span class="field-value">{{pdfData.age}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Gender*</span>
+      <span class="field-value">{{pdfData.gender}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Marital Status*</span>
+      <span class="field-value">{{pdfData.maritalStatus}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Religion</span>
+      <span class="field-value">{{pdfData.religion}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Nationality</span>
+      <span class="field-value">{{pdfData.nationality}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Caste</span>
+      <span class="field-value">{{pdfData.caste}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Blood Group</span>
+      <span class="field-value">{{pdfData.bloodGroup}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Weight</span>
+      <span class="field-value">{{pdfData.weight}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Region</span>
+      <span class="field-value">{{pdfData.region}}</span>
+    </div>
+     <div class="single-line-field">
+      <span class="field-label">Identity</span>
+      <span class="field-value">{{pdfData.identityMark}}</span>
+    </div>
+     <div class="single-line-field">
+      <span class="field-label">Shift Type*</span>
+      <span class="field-value">{{pdfData.shiftType}}</span>
+    </div>
+     <div class="single-line-field">
+      <span class="field-label">Shift Option*</span>
+      <span class="field-value">{{printDroddownValue('shiftOption',pdfData.shiftOption)}}</span>
+    </div>
+     <div class="single-line-field">
+      <span class="field-label">Appointment Mths:</span>
+      <span class="field-value">{{pdfData.appointmentMonths}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Transfer From</span>
+      <span class="field-value">{{printDroddownValue('transferFrom',pdfData.transferFrom)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Transfer To</span>
+      <span class="field-value">{{printDroddownValue('transferTo',pdfData.transferTo)}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Transfer Date</span>
+      <span class="field-value">{{pdfData.transferDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Reporting Date</span>
+      <span class="field-value">{{pdfData.reportingDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Pan Card No:</span>
+      <span class="field-value">{{pdfData.panCardNo}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">PF UAN No:</span>
+      <span class="field-value">{{pdfData.pfUanNo}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Worker No(LWF):</span>
+      <span class="field-value">{{pdfData.workerLwfNo}}</span>
+    </div>
     
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label required">Aadhar No. (12 digits)*</label>
-          <p>{{pdfData.aadharNo}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Paycode</label>
-          <p>{{pdfData.payCode}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Card No.</label>
-          <p>{{pdfData.cardNo}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Entry date</label>
-          <p>{{pdfData.entryDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-    </div>
+  </div>
 
-    <!-- Second Row -->
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label required">Post Applied For*</label>
-          <p>{{printDroddownValue('postAppliedFor',pdfData.postAppliedFor)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Designation*</label> 
-          <p>{{printDroddownValue('designation',pdfData.designation)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Department*</label> 
-          <p>{{printDroddownValue('department',pdfData.dedepartmentsignation)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Sub Dept.*</label> 
-          <p>{{printDroddownValue('subDepartment',pdfData.subDepartment)}}</p>
-        </div>
-      </div>
-    </div>
+  <!-- Salary Details Section -->
+  <div class="section">
+    <h3 class="section-title">Salary & Payroll</h3>
+    <div class="table-responsive">
+    <table class="salary-table dt-responsive nowrap table-card-list" style="border-collapse: collapse;width: 100%;font-size: 10px;">
+  <thead>
+    <tr>
+      <th>Sr.No</th>
+      <th>Transport Facility(Y/N):</th>
+      <th>Route No:</th>
+      <th>Actual CTC:</th>
+      <th>Basic Salary:</th>
+      <th>HRA:</th>
+      <th>CONV:</th>
+      <th>Medical Allowance:</th>
+      <th>Other Allowance:</th>
+      <th>Attendance Incentive:</th>
+      <th>Gross Salary:</th>
+      <th>PF Empe:</th>
+      <th>ESI Empe:</th>
+      <th>LWF Empe:</th>
+      <th>Total Deduction:</th>
+      <th>PF Empr:</th>
+      <th>ESI Empr:</th>
+      <th>LWF Empr:</th>
+      <th>Bonus:</th>
+      <th>CTC Exgratia:</th>
+      <th>Sub Total:</th>
+      <th>Empr PF:</th>
+      <th>Empr ESI:</th>
+      <th>Fixed CTC:</th>
+      <th>Night Rate:</th>
+      <th>OT Rate:</th>
+      <th>Remarks:</th>
+      <th>Employee Type:*</th>
+      <th>Wages Calculation:*</th>
+      <th>Payment Type:*</th>
+      <th>Overtime:*</th>
+      <th>Fooding:*</th>
+    </tr>
+  </thead>
 
-    <!-- Third Row -->
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Division*</label> 
-          <p>{{printDroddownValue('division',pdfData.division)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Category*</label> 
-          <p>{{printDroddownValue('category',pdfData.category)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Cadre*</label> 
-          <p>{{printDroddownValue('cadre',pdfData.cadre)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Company*</label> 
-          <p>{{getCompanyData(pdfData.company)}}</p>
-        </div>
-      </div>
-    </div>
+  <tbody *ngIf="pdfData.salaryPayroll && pdfData.salaryPayroll.length > 0; else noData">
+    <tr *ngFor="let sal of pdfData.salaryPayroll; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ sal.transportFacility ? 'Yes' : 'No' }}</td>
+      <td>{{ sal.routeNo }}</td>
+      <td>{{ sal.actualCtc | currency:'INR' }}</td>
+      <td>{{ sal.basicSalary | currency:'INR' }}</td>
+      <td>{{ sal.hra | currency:'INR' }}</td>
+      <td>{{ sal.conveyanceAllowance | currency:'INR' }}</td>
+      <td>{{ sal.medicalAllowance | currency:'INR' }}</td>
+      <td>{{ sal.otherAllowance | currency:'INR' }}</td>
+      <td>{{ sal.attendanceIncentive | currency:'INR' }}</td>
+      <td>{{ sal.grossSalary | currency:'INR' }}</td>
+      <td>{{ sal.pfEmployee | currency:'INR' }}</td>
+      <td>{{ sal.esiEmployee | currency:'INR' }}</td>
+      <td>{{ sal.lwfEmployee | currency:'INR' }}</td>
+      <td>{{ sal.totalDeduction | currency:'INR' }}</td>
+      <td>{{ sal.pfEmployer | currency:'INR' }}</td>
+      <td>{{ sal.esiEmployer | currency:'INR' }}</td>
+      <td>{{ sal.lwfEmployer | currency:'INR' }}</td>
+      <td>{{ sal.salaryBonus | currency:'INR' }}</td>
+      <td>{{ sal.exgratia | currency:'INR' }}</td>
+      <td>{{ sal.subTotalCtc | currency:'INR' }}</td>
+      <td>{{ sal.pfEmployer | currency:'INR' }}</td>
+      <td>{{ sal.esiEmployer | currency:'INR' }}</td>
+      <td>{{ sal.fixedCtc | currency:'INR' }}</td>
+      <td>{{ sal.nightRate | currency:'INR' }}</td>
+      <td>{{ sal.otRate | currency:'INR' }}</td>
+      <td>{{ sal.remarks }}</td>
+      <td>{{ sal.employeeType | titlecase }}</td>
+      <td>{{ sal.wageCalculationType }}</td>
+      <td>{{ sal.paymentType }}</td>
+      <td>{{ sal.overtimeEnabled ? 'Enabled' : 'Disabled' }}</td>
+      <td>{{ sal.foodingEnabled ? 'Enabled' : 'Disabled' }}</td>
+    </tr>
+  </tbody>
 
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Location*</label>
-          <p>{{pdfData.location}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Cost Center*</label> 
-          <p>{{printDroddownValue('costCentre',pdfData.costCentre)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">RL Band*</label> 
-          <p>{{printDroddownValue('rlBand',pdfData.rlBand)}}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Name Section -->
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label d-block mb-1">Name in Capital Letters*</label>
-          <p>{{pdfData.fullName | uppercase}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label d-block mb-1 required">Father's/Husband's Name*</label>
-          <p>{{pdfData.fatherOrHusbandName}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label d-block mb-1">Mother's Name</label>
-          <p>{{pdfData.motherName}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3 justify-content-start">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Date of Birth</label>
-          <p>{{pdfData.dateOfBirth | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Age*</label>
-          <p>{{pdfData.age}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Gender*</label>
-          <p>{{pdfData.gender}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Marital Status*</label>
-          <p>{{pdfData.maritalStatus}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Religion</label>
-          <p>{{pdfData.religion}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Nationality</label>
-          <p>{{pdfData.nationality}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Caste</label>
-          <p>{{pdfData.caste}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Blood Group</label>
-          <p>{{pdfData.bloodGroup}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Weight</label>
-          <p>{{pdfData.weight}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Region</label>
-          <p>{{pdfData.region}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3 mb-0">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Identity</label>
-          <p>{{pdfData.identityMark}}</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label mb-1">Shift Type*</label>
-          <p>{{pdfData.shiftType}}</p>
-            
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Shift Option*</label> 
-          <p>{{printDroddownValue('shiftOption',pdfData.shiftOption)}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-2">
-      <div class="col-md-2">
-        <div class="form-group w-100">
-          <label class="form-label">Appointment Mths:</label>
-          <p>{{pdfData.appointmentMonths}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group w-100">
-          <label class="form-label">Transfer From</label> 
-          <p>{{printDroddownValue('transferFrom',pdfData.transferFrom)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group w-100">
-          <label class="form-label">Transfer To</label> 
-          <p>{{printDroddownValue('transferTo',pdfData.transferTo)}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group w-100">
-          <label class="form-label">Transfer Date</label>
-          <p>{{pdfData.transferDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="form-group">
-          <label class="form-label">Reporting Date</label>
-          <p>{{pdfData.reportingDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Pan Card No:</label>
-          <p>{{pdfData.panCardNo}}</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">PF UAN No:</label>
-          <p>{{pdfData.pfUanNo}}</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Worker No(LWF):</label>
-          <p>{{pdfData.workerLwfNo}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Bank A/c No:</label>
-          <p>{{pdfData.bankAccountNo}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Bank Name:</label>
-          <p>{{pdfData.bankName}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Bank IFSC Code:</label>
-          <p>{{pdfData.bankIfscCode}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Branch:</label>
-          <p>{{pdfData.bankBranch}}</p>
-        </div>
-      </div>
+  <!-- 👇 Empty data fallback -->
+  <ng-template #noData>
+    <tbody>
+      <tr>
+        <td colspan="31" class="text-center">No salary payroll data available.</td>
+      </tr>
+    </tbody>
+  </ng-template>
+</table>
     </div>
   </div>
 
-  <!-- Contact & Family Section -->
-  <div class="my-3 p-3 border">
-    <h4 class="m-0 form-section-title">Contact & Family</h4>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card-header py-1">Address and Family Members</div>
-      </div>
+  <!-- Address Information Section completed-->
+  <div class="section">
+    <h3 class="section-title">CONTACT & ADDRESS INFORMATION</h3>
+    <div class="single-line-field">
+      <span class="field-label">Present Address*</span>
+      <span class="field-value">{{pdfData.presentAddress}}</span>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group mb-2">
-          <label class="form-label">Present Address*</label>
-          <p>{{pdfData.presentAddress}}</p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group mb-2">
-          <label class="form-label">Permanent Address*</label>
-          <p>{{pdfData.permanentAddress}}</p>
-        </div>
-      </div>
+    <div class="single-line-field">
+      <span class="field-label">Permanent Address*</span>
+      <span class="field-value">{{pdfData.permanentAddress}}</span>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group mb-2">
-          <label class="required">State</label> 
-          <p>{{printDroddownValue('state',pdfData.state)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-2">
-          <label class="required">district</label> 
-          <p>{{printDroddownValue('district',pdfData.district)}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-2">
-          <label class="form-label">Pincode</label>
-          <p>{{pdfData.pincode}}</p>
-        </div>
-      </div>
+    <div class="single-line-field">
+      <span class="field-label">State</span>
+      <span class="field-value">{{printDroddownValue('state',pdfData.state)}}</span>
     </div>
-
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <p>{{pdfData.email}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-2">
-          <label class="form-label">Phone Number</label>
-          <p>{{pdfData.phone1}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Whatsapp No.</label>
-          <p>{{pdfData.whatsappNo}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-2">
-          <label class="form-label">Sub Division</label>
-          <p>{{pdfData.subDivision}}</p>
-        </div>
-      </div>
+    <div class="single-line-field">
+      <span class="field-label">district</span>
+      <span class="field-value">{{printDroddownValue('district',pdfData.district)}}</span>
     </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>S.No.</th>
-                <th>Name</th>
-                <th>Year of Birth</th>
-                <th>Relation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let member of pdfData.employeeFamilyMembers; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ member.name }}</td>
-                <td>{{ member.yearOfBirth }}</td>
-                <td>{{ member.relation }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div class="single-line-field">
+      <span class="field-label">Pincode</span>
+      <span class="field-value">{{pdfData.pincode}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Email</span>
+      <span class="field-value">{{pdfData.email}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Phone Number</span>
+      <span class="field-value">{{pdfData.phone1}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Whatsapp No.</span>
+      <span class="field-value">{{pdfData.whatsappNo}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Sub Division</span>
+      <span class="field-value">{{pdfData.subDivision}}</span>
     </div>
   </div>
 
-  <!-- Qualification & Experience Section -->
-  <div class="my-3 p-3 border">
-    <h4 class="pt-3 m-0 form-section-title">Qualification & Experience</h4>
+  <!-- Family Details Section completed-->
+  <div class="section">
+    <h3 class="section-title">FAMILY DETAILS</h3>
+    <table class="family-table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Name</th>
+          <th>Relationship</th>
+          <th>Date of Birth</th>
+          <th>Residing With Employee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of pdfData.employeeFamilyMembers || [{name: 'NILAM DEVI', relation: 'MOTHER', yearOfBirth: '45 YEARS'}]; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ member.name }}</td>
+          <td>{{ member.relation }}</td>
+          <td>{{ member.yearOfBirth }}</td>
+          <td>YES</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Qulification & Expereince completed-->
+   <div class="section">
+    <h3 class="section-title">Qualification & Experience</h3>
+    <div class="single-line-field">
+      <span class="field-label">Qualification</span>
+      <span class="field-value">{{pdfData.qualification}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Technical Qualification</span>
+      <span class="field-value">{{pdfData.technicalQualification}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Languages Known</span>
+      <span class="field-value">{{pdfData.languagesKnown}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Total Experience</span>
+      <span class="field-value">{{pdfData.totalExperienceYears}} years</span>
+    </div>
+  </div>
+  <div class="section">
+    <h3 class="section-title">Experience</h3>
+    <table class="expereince-table">
+      <thead>
+        <tr>
+          <th>S.No.</th>
+          <th>Name of employer</th>
+          <th>Post held</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Reason for Leaving</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let exp of pdfData.employeeExperiences; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ exp.employerName }}</td>
+          <td>{{ exp.postHeld }}</td>
+          <td>{{ exp.fromDate | date:'yyyy-MM-dd' }}</td>
+          <td>{{ exp.toDate | date:'yyyy-MM-dd' }}</td>
+          <td>{{ exp.reasonForLeaving }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Additional Info -->
+   <div class="section">
+    <h3 class="section-title">Additional Information</h3>
+    <div class="single-line-field">
+      <span class="field-label">Do you have any relative working in the company/unit?</span>
+      <span class="field-value">{{pdfData.relativeWorkingInCompany ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">If yes, give name:</span>
+      <span class="field-value">{{pdfData.relativeName}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Relationship:</span>
+      <span class="field-value">{{pdfData.relativeRelationship}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Date:</span>
+      <span class="field-value">{{pdfData.entryDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Interview Date:*</span>
+      <span class="field-value">{{pdfData.interviewDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Interviewed By:</span>
+      <span class="field-value">{{pdfData.interviewedBy}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Approved By:</span>
+      <span class="field-value">{{pdfData.approvedBy}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Date of Joining:*</span>
+      <span class="field-value">{{pdfData.dateOfJoining | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Salary:</span>
+      <span class="field-value">{{pdfData.salary | currency:'INR'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Confirm Date:</span>
+      <span class="field-value">{{pdfData.confirmDate | date:'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Status:</span>
+      <span class="field-value">{{pdfData.employmentStatus}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Proof Name:</span>
+      <span class="field-value">{{pdfData.proofName}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Individual Bio-Data:</span>
+      <span class="field-value">{{pdfData.individualBioData ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Photo:</span>
+      <span class="field-value">{{pdfData.photoAttached ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Application for Employment:</span>
+      <span class="field-value">{{pdfData.applicationAttached ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Nomination Form:</span>
+      <span class="field-value">{{pdfData.nominationFormAttached ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Proof of Age:</span>
+      <span class="field-value">{{pdfData.proofOfAge ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Contract of Employment:</span>
+      <span class="field-value">{{pdfData.contractAttached ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Certificates/Testimonials:</span>
+      <span class="field-value">{{pdfData.certificatesAttached ? 'Yes' : 'No'}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Joining Report:</span>
+      <span class="field-value">{{pdfData.joiningReportAttached ? 'Yes' : 'No'}}</span>
+    </div>
+  </div>
+
+
+  <!-- Nomination Forms Section completed-->
+  <div class="section">
+    <h3 class="section-title">NOMINATION FORMS</h3>
     
-    <div class="row pt-3">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Qualification</label>
-          <p>{{pdfData.qualification}}</p>
-        </div>
+    <!-- PF Nomination completed-->
+    <div class="nomination-form">
+      <h4>PROVIDENT FUND NOMINATION</h4>
+      <div class="single-line-field">
+        <span class="field-label">ESI Insurance No.</span>
+        <span class="field-value">{{pdfData.esiInsuranceNo || 'N/A'}}</span>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Technical Qualification</label>
-          <p>{{pdfData.technicalQualification}}</p>
-        </div>
+      <div class="single-line-field">
+        <span class="field-label">ESI Employer Code</span>
+        <span class="field-value">{{pdfData.esiEmployerCode || 'N/A'}}</span>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label class="form-label">Languages Known</label>
-          <p>{{pdfData.languagesKnown}}</p>
-        </div>
+      <div class="single-line-field">
+        <span class="field-label">Dispensary</span>
+        <span class="field-value">{{pdfData.dispensary || 'N/A'}}</span>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label class="form-label">Total Experience</label>
-        <p>{{pdfData.totalExperienceYears}} years</p>
+      <div class="single-line-field">
+        <span class="field-label">Local Office</span>
+        <span class="field-value">{{pdfData.esiLocalOffice || 'N/A'}}</span>
       </div>
-    </div>
-
-    <div class="row pt-3">
-      <div class="col-12">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>S.No.</th>
-                <th>Name of employer</th>
-                <th>Post held</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Reason for Leaving</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let exp of pdfData.employeeExperiences; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ exp.employerName }}</td>
-                <td>{{ exp.postHeld }}</td>
-                <td>{{ exp.fromDate | date:'yyyy-MM-dd' }}</td>
-                <td>{{ exp.toDate | date:'yyyy-MM-dd' }}</td>
-                <td>{{ exp.reasonForLeaving }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="single-line-field">
+        <span class="field-label">ESI Nominee for Payment</span>
+        <span class="field-value">{{pdfData.esiNomineeForPayment || 'N/A'}}</span>
+      </div>
+      <div class="single-line-field">
+        <span class="field-label">Particulars of Family</span>
+        <span class="field-value">{{pdfData.perticularOfFamily || 'N/A'}}</span>
+      </div>
+      <div class="single-line-field">
+        <span class="field-label">Family member residing with insured person</span>
+        <span class="field-value">{{pdfData.familyMemberResidingInsuredPerson || 'N/A'}}</span>
+      </div>
+      <div class="single-line-field">
+        <span class="field-label">pf AccountNo</span>
+        <span class="field-value">{{pdfData.pfAccountNo || 'N/A'}}</span>
+      </div>
+      <div class="single-line-field">
+        <span class="field-label">pfNominee</span>
+        <span class="field-value">{{pdfData.pfNominee || 'N/A'}}</span>
+      </div>
+      <div class="single-line-field">
+        <span class="field-label">pfSharePercent</span>
+        <span class="field-value">{{pdfData.pfSharePercent || 'N/A'}}</span>
       </div>
     </div>
-  </div>
-
-  <!-- Additional Information Section -->
-  <div class="my-3 p-3 border">
-    <h4 class="pt-3 m-0 form-section-title">Additional Information</h4>
     
-    <div class="row pt-3">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Do you have any relative working in the company/unit?</label>
-          <p>{{pdfData.relativeWorkingInCompany ? 'Yes' : 'No'}}</p>
-        </div>
+    <!-- Gratuity Nomination completed-->
+    <div class="nomination-form">
+      <h4>GRATUITY NOMINATION</h4>
+      <div class="single-line-field">
+        <span class="field-label">Nominee's for Gratuity*</span>
+        <span class="field-value">{{pdfData.gratuityNominee || 'N/A'}}</span>
       </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">If yes, give name:</label>
-          <p>{{pdfData.relativeName}}</p>
-        </div>
+      <div class="single-line-field">
+        <span class="field-label">SHARE %age of nominee*</span>
+        <span class="field-value">{{pdfData.gratuitySharePercent || 'N/A'}}</span>
       </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <label class="form-label">Relationship:</label>
-          <p>{{pdfData.relativeRelationship}}</p>
-        </div>
+      <div class="single-line-field">
+        <span class="field-label">childrenPension</span>
+        <span class="field-value">{{pdfData.childrenPension || 'N/A'}}</span>
       </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Date:</label>
-          <p>{{pdfData.entryDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row pt-2">
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Interview Date:*</label>
-          <p>{{pdfData.interviewDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Interviewed By:</label>
-          <p>{{pdfData.interviewedBy}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Approved By:</label>
-          <p>{{pdfData.approvedBy}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Date of Joining:*</label>
-          <p>{{pdfData.dateOfJoining | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row pt-2">
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Salary:</label>
-          <p>{{pdfData.salary | currency:'INR'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Confirm Date:</label>
-          <p>{{pdfData.confirmDate | date:'yyyy-MM-dd'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Status:</label>
-          <p>{{pdfData.employmentStatus}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="form-label">Proof Name:</label>
-          <p>{{pdfData.proofName}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row pt-2">
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Individual Bio-Data:</label>
-          <p>{{pdfData.individualBioData ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Photo:</label>
-          <p>{{pdfData.photoAttached ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Application for Employment:</label>
-          <p>{{pdfData.applicationAttached ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Nomination Form:</label>
-          <p>{{pdfData.nominationFormAttached ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row pt-2">
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Proof of Age:</label>
-          <p>{{pdfData.proofOfAge ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Contract of Employment:</label>
-          <p>{{pdfData.contractAttached ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Certificates/Testimonials:</label>
-          <p>{{pdfData.certificatesAttached ? 'Yes' : 'No'}}</p>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="form-group mb-1">
-          <label class="me-1">Joining Report:</label>
-          <p>{{pdfData.joiningReportAttached ? 'Yes' : 'No'}}</p>
-        </div>
+      <div class="single-line-field">
+        <span class="field-label">widowPension</span>
+        <span class="field-value">{{pdfData.widowPension || 'N/A'}}</span>
       </div>
     </div>
   </div>
 
-  <!-- Salary & Payroll Section -->
-  <div class="my-3 p-3 border">
-    <h4 class="pt-3 m-0 form-section-title">Salary & Payroll</h4>
-    
-    <div class="card-header my-3">Salary & Payroll Details</div>
-    
-    <div class="card-body">
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <div class="d-flex">
-            <label class="ms-2">Transport Facility(Y/N):</label>
-            <p>{{pdfData.transportFacility ? 'Yes' : 'No'}}</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Route No:</label>
-          <p>{{pdfData.routeNo}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Actual CTC:</label>
-          <p>{{pdfData.actualCtc | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Basic Salary:</label>
-          <p>{{pdfData.basicSalary | currency:'INR'}}</p>
-        </div>
-      </div>
+  <!-- Bank Details Section completed-->
+  <div class="section">
+    <h3 class="section-title">BANK DETAILS</h3>
+    <div class="single-line-field">
+      <span class="field-label">Bank Name:</span>
+      <span class="field-value">{{pdfData.bankName}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Bank A/c No:</span>
+      <span class="field-value">{{pdfData.bankAccountNo}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Bank IFSC Code:</span>
+      <span class="field-value">{{pdfData.bankIfscCode}}</span>
+    </div>
+    <div class="single-line-field">
+      <span class="field-label">Branch:</span>
+      <span class="field-value">{{pdfData.bankBranch}}</span>
+    </div>
+  </div>
 
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <label class="form-label">HRA:</label>
-          <p>{{pdfData.hra | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">CONV:</label>
-          <p>{{pdfData.conveyanceAllowance | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Medical Allowance:</label>
-          <p>{{pdfData.medicalAllowance | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Other Allowance:</label>
-          <p>{{pdfData.otherAllowance | currency:'INR'}}</p>
-        </div>
-      </div>
+  <!-- Document Verification Section -->
+  <div class="section">
+    <h3 class="section-title">DOCUMENT VERIFICATION</h3>
+    <table class="document-table">
+      <tr>
+        <th>AADHAR CARD</th>
+        <th>PAN CARD</th>
+        <th>VOTER ID</th>
+        <th>ESIC CARD</th>
+      </tr>
+      <tr>
+        <td>{{pdfData.aadharNo}}</td>
+        <td>{{pdfData.panCardNo}}</td>
+        <td>N/A</td>
+        <td>{{pdfData.esiEmployee | currency:'INR'}}</td>
+      </tr>
+    </table>
+  </div>
 
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <label class="form-label">Attendance Incentive:</label>
-          <p>{{pdfData.attendanceIncentive | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Gross Salary:</label>
-          <p>{{pdfData.grossSalary | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">PF Empe:</label>
-          <p>{{pdfData.pfEmployee | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">ESI Empe:</label>
-          <p>{{pdfData.esiEmployee | currency:'INR'}}</p>
-        </div>
+  <!-- Declaration Section -->
+  <div class="declaration-section">
+    <p>I hereby declare that all the information provided above is true and correct to the best of my knowledge.</p>
+    <div class="signature-area">
+      <div class="employee-signature">
+        <p>Employee Signature</p>
+        <div class="signature-line"></div>
       </div>
-
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <label class="form-label">LWF Empe:</label>
-          <p>{{pdfData.lwfEmployee | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Total Deduction:</label>
-          <p>{{pdfData.totalDeduction | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">PF Empr:</label>
-          <p>{{pdfData.pfEmployer | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">ESI Empr:</label>
-          <p>{{pdfData.esiEmployer | currency:'INR'}}</p>
-        </div>
+      <div class="date">
+        <!-- <p>Date: {{pdfData.entryDate | date:'dd-MM-yyyy' || '04-09-2024'}}</p> -->
       </div>
-
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <label class="form-label">LWF Empr:</label>
-          <p>{{pdfData.lwfEmployer | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Bonus:</label>
-          <p>{{pdfData.salaryBonus | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">CTC Exgratia:</label>
-          <p>{{pdfData.exgratia | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Sub Total:</label>
-          <p>{{pdfData.subTotalCtc | currency:'INR'}}</p>
-        </div>
-      </div>
-
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <label for="Empr PF">Empr PF:</label>
-          <p>{{pdfData.pfEmployer | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label for="Empr ESI">Empr ESI:</label>
-          <p>{{pdfData.esiEmployer | currency:'INR'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label for="Fixed CTC">Fixed CTC:</label>
-          <p>{{pdfData.fixedCtc | currency:'INR'}}</p>
-        </div>
-      </div>
-
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-1">Night Rate:</label>
-            <p>{{pdfData.nightRate | currency:'INR'}}</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-1">OT Rate:</label>
-            <p>{{pdfData.otRate | currency:'INR'}}</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label">Remarks:</label>
-          <p>{{pdfData.remarks}}</p>
-        </div>
-      </div>
-
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-2">Employee Type:*</label>
-            <p>{{pdfData.employeeType | titlecase}}</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-2">Wages Calculation:*</label>
-            <p>{{pdfData.wageCalculationType}}</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-2">Payment Type:*</label>
-            <p>{{pdfData.paymentType}}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row pt-1">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-2">Overtime:*</label>
-            <p>{{pdfData.overtimeEnabled ? 'Enabled' : 'Disabled'}}</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="me-2">Fooding:*</label>
-            <p>{{pdfData.foodingEnabled ? 'Enabled' : 'Disabled'}}</p>
-          </div>
-        </div>
+      <div class="employer-signature">
+        <p>Authorized Signatory</p>
+        <div class="signature-line"></div>
       </div>
     </div>
   </div>
 
-  <!-- Statutory Details Section -->
-  <div class="my-3 p-3 border">
-    <h4 class="pt-3 m-0 form-section-title">Statutory Details</h4>
-    
-    <div class="card-header my-3">STATUTORY</div>
-    
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12">
-          <h6><strong>FORM 1 - ESI *</strong></h6>
-          <div class="row">
-            <div class="col-md-3">
-              <label class="form-label">ESI Insurance No.</label>
-              <p>{{pdfData.esiInsuranceNo || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">ESI Employer Code</label>
-              <p>{{pdfData.esiEmployerCode || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Dispensary</label>
-              <p>{{pdfData.dispensary || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Local Office</label>
-              <p>{{pdfData.esiLocalOffice || 'N/A'}}</p>
-            </div>
-          </div>
-
-          <div class="row pt-2">
-            <div class="col-md-3">
-              <label class="form-label">ESI Nominee for Payment</label>
-              <p>{{pdfData.esiNomineeForPayment || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Particulars of Family</label>
-              <p>{{pdfData.perticularOfFamily || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Family member residing with insured person</label>
-              <p>{{pdfData.familyMemberResidingInsuredPerson || 'N/A'}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row pt-3">
-        <div class="col-12">
-          <h6><strong>PF Details</strong></h6>
-          <div class="row">
-            <div class="col-md-3">
-              <label class="form-label">pf AccountNo</label>
-              <p>{{pdfData.pfAccountNo || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">pfNominee</label>
-              <p>{{pdfData.pfNominee || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label>pfSharePercent</label>
-              <p>{{pdfData.pfSharePercent || 'N/A'}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row pt-3">
-        <div class="col-12">
-          <h6><strong>FORM F - Gratuity</strong></h6>
-          <div class="row">
-            <div class="col-md-3">
-              <label>Nominee's for Gratuity*</label>
-              <p>{{pdfData.gratuityNominee || 'N/A'}}</p>
-            </div>
-            <div class="col-md-3">
-              <label>SHARE %age of nominee*</label>
-              <p>{{pdfData.gratuitySharePercent || 'N/A'}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row pt-3">
-        <div class="col-md-3">
-          <label>childrenPension</label>
-          <p>{{pdfData.childrenPension || 'N/A'}}</p>
-        </div>
-        <div class="col-md-3">
-          <label>widowPension</label>
-          <p>{{pdfData.widowPension || 'N/A'}}</p>
-        </div>
-      </div>
-    </div>
+  <!-- Footer -->
+  <div class="footer">
+    <p>Page 1 of 1</p>
+    <p>Megasoft Systems and Solutions</p>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <button class="theme-button" (click)="print()">Print Form</button>
-    </div>
-  </div>
+<div class="print-button-container">
+  <button class="print-button" (click)="print()">Print Form</button>
 </div>
