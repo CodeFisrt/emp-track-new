@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { AutoErrorDirective } from '../directives/auto-error.directive';
 import { ActivatedRoute } from '@angular/router';
 import { DatePickerModule } from 'primeng/datepicker';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-print-pdf',
@@ -379,23 +382,41 @@ export class PrintPdfComponent {
     this.disablePersonalInfoValidators();
     localStorage.removeItem('formData'); // Clear localStorage if needed
   }
-  print() {
-    const printContents = document.getElementById('print-section')?.innerHTML;
-  const originalContents = document.body.innerHTML;
+  // print() {
+  //   const printContents = document.getElementById('print-section')?.innerHTML;
+  // const originalContents = document.body.innerHTML;
 
-  if (printContents) {
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-    window.location.reload(); // Restore page after print
-    // const printContents = document.getElementById('print-section')?.innerHTML;
-    // const originalContents = document.body.innerHTML;
+  // if (printContents) {
+  //   document.body.innerHTML = printContents;
+  //   window.print();
+  //   document.body.innerHTML = originalContents;
+  //   window.location.reload(); // Restore page after print
+  //   // const printContents = document.getElementById('print-section')?.innerHTML;
+  //   // const originalContents = document.body.innerHTML;
 
-    // if (printContents) {
-    //   document.body.innerHTML = printContents;
-    //   window.print();
-    //   document.body.innerHTML = originalContents;
-    //   window.location.reload(); // optional: reload to restore state
-    }
-  }
+  //   // if (printContents) {
+  //   //   document.body.innerHTML = printContents;
+  //   //   window.print();
+  //   //   document.body.innerHTML = originalContents;
+  //   //   window.location.reload(); // optional: reload to restore state
+  //   }
+  // }
+
+async print() {
+  const section = document.getElementById('print-section');
+  if (!section) return;
+
+  const opt = {
+    margin:       10,
+    filename:     'employee-report.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2 },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'p' }
+  };
+
+  await html2pdf().from(section).set(opt).save();
+}
+
+
+
 }
